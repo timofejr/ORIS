@@ -1,0 +1,16 @@
+/home/timofejr/MyProjects/MiniHttpServer/bin/Debug/net9.0/MiniHttpServer
+/home/timofejr/MyProjects/MiniHttpServer/bin/Debug/net9.0/MiniHttpServer.deps.json
+/home/timofejr/MyProjects/MiniHttpServer/bin/Debug/net9.0/MiniHttpServer.runtimeconfig.json
+/home/timofejr/MyProjects/MiniHttpServer/bin/Debug/net9.0/MiniHttpServer.dll
+/home/timofejr/MyProjects/MiniHttpServer/bin/Debug/net9.0/MiniHttpServer.pdb
+/home/timofejr/MyProjects/MiniHttpServer/obj/Debug/net9.0/MiniHttpServer.GeneratedMSBuildEditorConfig.editorconfig
+/home/timofejr/MyProjects/MiniHttpServer/obj/Debug/net9.0/MiniHttpServer.AssemblyInfoInputs.cache
+/home/timofejr/MyProjects/MiniHttpServer/obj/Debug/net9.0/MiniHttpServer.AssemblyInfo.cs
+/home/timofejr/MyProjects/MiniHttpServer/obj/Debug/net9.0/MiniHttpServer.csproj.CoreCompileInputs.cache
+/home/timofejr/MyProjects/MiniHttpServer/obj/Debug/net9.0/MiniHttpServer.dll
+/home/timofejr/MyProjects/MiniHttpServer/obj/Debug/net9.0/refint/MiniHttpServer.dll
+/home/timofejr/MyProjects/MiniHttpServer/obj/Debug/net9.0/MiniHttpServer.pdb
+/home/timofejr/MyProjects/MiniHttpServer/obj/Debug/net9.0/MiniHttpServer.genruntimeconfig.cache
+/home/timofejr/MyProjects/MiniHttpServer/obj/Debug/net9.0/ref/MiniHttpServer.dll
+/home/timofejr/MyProjects/MiniHttpServer/bin/Debug/net9.0/settings.json
+/home/timofejr/MyProjects/MiniHttpServer/bin/Debug/net9.0/static/index.html
