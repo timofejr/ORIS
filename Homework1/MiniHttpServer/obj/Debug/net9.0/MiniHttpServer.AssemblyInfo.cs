@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("MiniHttpServer")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4c6b05413f8e1e9cb9490ce72dd51f2c0626c8d8")]
 [assembly: System.Reflection.AssemblyProductAttribute("MiniHttpServer")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MiniHttpServer")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
