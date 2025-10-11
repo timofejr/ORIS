@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/home/timofejr/MyProjects/ORIS_HW/Homework1/MiniHttpServer/MiniHttpServer.csproj": {}
+    "/home/timofejr/MyProjects/ORIS_HW/Homework2/MiniHttpServer/MiniHttpServer.csproj": {}
   },
   "projects": {
-    "/home/timofejr/MyProjects/ORIS_HW/Homework1/MiniHttpServer/MiniHttpServer.csproj": {
+    "/home/timofejr/MyProjects/ORIS_HW/Homework2/MiniHttpServer/MiniHttpServer.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/timofejr/MyProjects/ORIS_HW/Homework1/MiniHttpServer/MiniHttpServer.csproj",
+        "projectUniqueName": "/home/timofejr/MyProjects/ORIS_HW/Homework2/MiniHttpServer/MiniHttpServer.csproj",
         "projectName": "MiniHttpServer",
-        "projectPath": "/home/timofejr/MyProjects/ORIS_HW/Homework1/MiniHttpServer/MiniHttpServer.csproj",
+        "projectPath": "/home/timofejr/MyProjects/ORIS_HW/Homework2/MiniHttpServer/MiniHttpServer.csproj",
         "packagesPath": "/home/timofejr/.nuget/packages/",
-        "outputPath": "/home/timofejr/MyProjects/ORIS_HW/Homework1/MiniHttpServer/obj/",
+        "outputPath": "/home/timofejr/MyProjects/ORIS_HW/Homework2/MiniHttpServer/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/home/timofejr/.nuget/NuGet/NuGet.Config"
