@@ -1,41 +1,20 @@
-using System;
 using System.Net;
-using System.Text;
-using System.Text.Json;
+using System.Text.Json.Nodes;
+using MiniHttpServer.Context;
 using MiniHttpServer.Core.Handlers;
+using MiniHttpServer.Utils;
 
 namespace MiniHttpServer;
 
 public class HttpServer
 {
     private readonly HttpListener _listener = new ();
-    private readonly ServerLogger _logger = new ();
-    private readonly SettingsModel _settings = SettingsManager.Instance.Settings;
-
-    private static readonly Dictionary<string, string> HeaderByExtension = new()
-    {
-        { ".html", "text/html" },
-        { ".css", "text/css" },
-        { ".js", "application/javascript" },
-        { ".png", "image/png" },
-        { ".jpg", "image/jpeg" },
-        { ".jpeg", "image/jpeg" },
-        { ".webp", "image/webp" },
-        { ".ico", "image/x-icon" },
-        { ".svg", "image/svg+xml" },
-        { ".json", "application/json" }
-    };
-
-    public HttpServer()
-    {
-        
-    }
 
     public void Start()
     {
-        _listener.Prefixes.Add($"{_settings.Domain}:{_settings.Port}/");
+        _listener.Prefixes.Add($"http://{GlobalContext.SettingsManager.Settings.Domain}:{GlobalContext.SettingsManager.Settings.Port}/");
         _listener.Start();
-        _logger.ServerStarted();
+        GlobalContext.Logger.ServerStarted(GlobalContext.SettingsManager.Settings.Domain, GlobalContext.SettingsManager.Settings.Port);
         Receive();
     }
 
@@ -47,69 +26,92 @@ public class HttpServer
     private void Receive()
     {
         _listener.BeginGetContext(new AsyncCallback(ListenerCallback), _listener);
-        _logger.ServerWaiting();
     }
 
-    private async void ListenerCallback(IAsyncResult result)
+    private void ListenerCallback(IAsyncResult result)
     {
 
         if (!_listener.IsListening) return;
         var context = _listener.EndGetContext(result);
         
-        Handler h1 = new StaticFilesHandler();
-        Handler h2 = new FindMethodsHandler();
-        h1.Successor = h2;
-        h1.HandleRequest(2);
-        
+        var staticFilesHandler = new StaticFilesHandler();
+        var controllerHandler = new ControllersHandler();
+        staticFilesHandler.Successor = controllerHandler;
+        staticFilesHandler.HandleRequest(context);
+
+        Receive();
+    }
+    
+    public void SendStaticResponse(HttpListenerContext context, HttpStatusCode statusCode, string path)
+    {
         var response = context.Response;
         var request = context.Request;
+        
+        response.StatusCode = (int)statusCode;
+        response.ContentType = ContentType.GetContentTypeFromFile(path);
 
-        if (request.HttpMethod.Equals("get", StringComparison.InvariantCultureIgnoreCase))
+        var buffer = BufferManager.GetBytesFromFile(path);
+        response.ContentLength64 = buffer.Length;
+
+        using var output = response.OutputStream;
+        output.Write(buffer, 0, buffer.Length);
+        
+        
+        if (response.StatusCode == 200)
+            GlobalContext.Logger.LogMessage($"Запрос обработан: {request.Url.AbsolutePath} {request.HttpMethod} - Status: {response.StatusCode}");
+        else
+            GlobalContext.Logger.LogMessage($"Ошибка запроса: {request.Url.AbsolutePath} {request.HttpMethod} - Status: {response.StatusCode}");
+    }
+
+    public void SendJsonResponse(HttpListenerContext context, HttpStatusCode statusCode, string jsonString = "")
+    {
+        var response = context.Response;
+        var request = context.Request;
+        
+        response.StatusCode = (int)statusCode;
+        response.ContentType = ContentType.GetContentTypeByExtension(".json");
+
+        var buffer = BufferManager.GetBytesFromJson(jsonString);
+        response.ContentLength64 = buffer.Length;
+
+        using var output = response.OutputStream;
+        output.Write(buffer, 0, buffer.Length);
+        
+        
+        if (response.StatusCode == 200)
+            GlobalContext.Logger.LogMessage($"Запрос обработан: {request.Url.AbsolutePath} {request.HttpMethod} - Status: {response.StatusCode}");
+        else
+            GlobalContext.Logger.LogMessage($"Ошибка запроса: {request.Url.AbsolutePath} {request.HttpMethod} - Status: {response.StatusCode}");
+    }
+
+    public void Send404Response(HttpListenerContext context, string path)
+    {
+        try
         {
-                    
-            var pathToFile = _settings.StaticFilesPath + context.Request.Url?.LocalPath;
-        
-            // Написать три варианта отправки файла
-            if (pathToFile[^1] == '/')
-                pathToFile += "index.html";
-        
-            var fileInfo = new FileInfo(pathToFile);
+            var path404 = GlobalContext.SettingsManager.Settings.StaticFilesPath + path.Split('/')[1] + "/404.html";
 
-            try
+            if (File.Exists(path404))
             {
-                var buffer = await File.ReadAllBytesAsync(pathToFile);
-                response.ContentLength64 = buffer.Length;
-                response.ContentType = HeaderByExtension.GetValueOrDefault(fileInfo.Extension, "text/html");
-        
-                await using Stream output = response.OutputStream;
-
-                if (buffer.Length > 0) await output.WriteAsync(buffer);
-                await output.FlushAsync();
-
-                _logger.LogMessage("Запрос обработан");
-
-                Receive();
+                GlobalContext.Server.SendStaticResponse(context, HttpStatusCode.NotFound, path404);
             }
-            catch (FileNotFoundException e)
+            else
             {
-                response.StatusCode = 404;
-                await using Stream output = response.OutputStream;
-            
-                await output.FlushAsync();
-
-                _logger.LogMessage("Запрос обработан, 404");
-
-                Receive();
+                GlobalContext.Server.SendStaticResponse(context, HttpStatusCode.NotFound,
+                    GlobalContext.SettingsManager.Settings.StaticFilesPath + "/404.html");
             }
-        } else if (context.Request.HttpMethod.Equals("post", StringComparison.InvariantCultureIgnoreCase))
+        }
+        catch (Exception ex)
         {
-            switch (request.Url.AbsolutePath)
-            {
-                case "/sendEmail":
-                    break;
-                default:
-                    break;
-            }
+            GlobalContext.Server.SendStaticResponse(context, HttpStatusCode.NotFound,
+                GlobalContext.SettingsManager.Settings.StaticFilesPath + "/404.html");
+        }
+        finally
+        {
+            if (context.Response.StatusCode == 200)
+                GlobalContext.Logger.LogMessage($"Запрос обработан: {context.Request.Url.AbsolutePath} {context.Request.HttpMethod} - Status: {context.Response.StatusCode}");
+            else
+                GlobalContext.Logger.LogMessage($"Ошибка запроса: {context.Request.Url.AbsolutePath} {context.Request.HttpMethod} - Status: {context.Response.StatusCode}");
+
         }
     }
 }

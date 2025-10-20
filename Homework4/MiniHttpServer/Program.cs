@@ -1,20 +1,19 @@
-﻿using MiniHttpServer;
-
-// 0. Добавить логирование работы сервера(writeline)
-// 1. В папке static искать index.html. Если его нет не запускать сервервер и выводить сообщение в консоль.
-// 2. В файл settings вытащить настройки сервера, а именно: путь к статическим файлам (StaticDirectoryPath),
-// Domain, Port
-// 3. Брать настройки из файла settings.json. Если файла нет или ошибка в настройках, выводить сообщение и не запускать сервер.
-// 4. Обрабатывать более одного запроса
-// 5. Необходимо остановить сервер  при написанной команде "/stop"
-
-var logger = new ServerLogger();
+﻿using System.Reflection;
+using MiniHttpServer;
+using MiniHttpServer.Utils;
+using MiniHttpServer.Context;
+using MiniHttpServer.Settings;
 
 try
-{
-    var httpServer = new HttpServer();
+{   
+    EndpointsRegistry.LoadEndpoints(Assembly.GetExecutingAssembly());
+    
+    GlobalContext.Server = new HttpServer();
+    GlobalContext.Logger = Logger.Instance;
+    GlobalContext.SettingsManager = SettingsManager.Instance;
+    GlobalContext.Endpoints = EndpointsRegistry.LoadEndpoints(Assembly.GetExecutingAssembly());
 
-    httpServer.Start();
+    GlobalContext.Server.Start();
 
     while (true)
     {
@@ -23,13 +22,13 @@ try
             break;
     }
 
-    httpServer.Stop();
+    GlobalContext.Server.Stop();
 }
 catch (Exception ex)
 {
-    logger.LogMessage(ex.Message);
+    GlobalContext.Logger.LogMessage(ex.Message);
 }   
 finally
 {
-    logger.ServerStopped();
+    GlobalContext.Logger.ServerStopped();
 }
