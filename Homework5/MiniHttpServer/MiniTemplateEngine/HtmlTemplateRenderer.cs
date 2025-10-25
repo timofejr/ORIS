@@ -28,6 +28,11 @@ public class HtmlTemplateRenderer: IHtmlTemplateRenderer
 
     public string RenderToFile(string inputFilePath, string outputFilePath, object dataModel)
     {
-        throw new NotImplementedException();
+        var htmlTemplate = File.ReadAllText(inputFilePath);
+        var renderedHtmlTemplate = RenderFromString(htmlTemplate, dataModel);
+        
+        File.WriteAllText(outputFilePath, renderedHtmlTemplate);
+        
+        return RenderFromString(htmlTemplate, dataModel);
     }
 }

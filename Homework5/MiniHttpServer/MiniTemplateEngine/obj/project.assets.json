@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/timofejr/MyProjects/ORIS_HW/Homework5/MiniHttpServer/MiniTemplateEngine/MiniTemplateEngine.csproj",
+      "projectUniqueName": "/home/timofejr/MyProjects/ORIS/Homework5/MiniHttpServer/MiniTemplateEngine/MiniTemplateEngine.csproj",
       "projectName": "MiniTemplateEngine",
-      "projectPath": "/home/timofejr/MyProjects/ORIS_HW/Homework5/MiniHttpServer/MiniTemplateEngine/MiniTemplateEngine.csproj",
+      "projectPath": "/home/timofejr/MyProjects/ORIS/Homework5/MiniHttpServer/MiniTemplateEngine/MiniTemplateEngine.csproj",
       "packagesPath": "/home/timofejr/.nuget/packages/",
-      "outputPath": "/home/timofejr/MyProjects/ORIS_HW/Homework5/MiniHttpServer/MiniTemplateEngine/obj/",
+      "outputPath": "/home/timofejr/MyProjects/ORIS/Homework5/MiniHttpServer/MiniTemplateEngine/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/home/timofejr/.nuget/NuGet/NuGet.Config"
@@ -44,7 +44,7 @@
         "auditLevel": "low",
         "auditMode": "direct"
       },
-      "SdkAnalysisLevel": "9.0.100"
+      "SdkAnalysisLevel": "9.0.300"
     },
     "frameworks": {
       "net9.0": {
@@ -60,18 +60,12 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
-        "downloadDependencies": [
-          {
-            "name": "Microsoft.AspNetCore.App.Ref",
-            "version": "[9.0.9, 9.0.9]"
-          }
-        ],
         "frameworkReferences": {
           "Microsoft.NETCore.App": {
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/9.0.110/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/home/timofejr/.dotnet/sdk/9.0.306/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

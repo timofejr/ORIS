@@ -5,6 +5,7 @@
     <TargetFramework>net9.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>disable</Nullable>
+      <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
   </PropertyGroup>
 
   <ItemGroup>
@@ -14,12 +15,12 @@
     <Content Include="Static\**\*">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+      <Content Include="MiniTemplateEngine.UnitTests\**\*">
+          <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
   </ItemGroup>
 
   <ItemGroup>
-    <Reference Include="Microsoft.VisualStudio.TestPlatform.TestFramework">
-      <HintPath>..\..\..\..\.nuget\packages\mstest.testframework\3.6.4\lib\net8.0\Microsoft.VisualStudio.TestPlatform.TestFramework.dll</HintPath>
-    </Reference>
+    <PackageReference Include="MSTest.TestFramework" Version="4.0.1" />
   </ItemGroup>
-
 </Project>

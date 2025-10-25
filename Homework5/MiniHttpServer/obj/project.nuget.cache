@@ -1,10 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "HCGOQMcn8c4=",
+  "dgSpecHash": "vvFrGCy+x04=",
   "success": true,
-  "projectFilePath": "/home/timofejr/MyProjects/ORIS_HW/Homework5/MiniHttpServer/MiniHttpServer.csproj",
+  "projectFilePath": "/home/timofejr/MyProjects/ORIS/Homework5/MiniHttpServer/MiniHttpServer.csproj",
   "expectedPackageFiles": [
-    "/home/timofejr/.nuget/packages/microsoft.aspnetcore.app.ref/9.0.9/microsoft.aspnetcore.app.ref.9.0.9.nupkg.sha512"
+    "/home/timofejr/.nuget/packages/mstest.analyzers/4.0.1/mstest.analyzers.4.0.1.nupkg.sha512",
+    "/home/timofejr/.nuget/packages/mstest.testframework/4.0.1/mstest.testframework.4.0.1.nupkg.sha512"
   ],
   "logs": []
 }

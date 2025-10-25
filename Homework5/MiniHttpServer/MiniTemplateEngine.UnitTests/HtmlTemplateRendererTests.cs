@@ -8,7 +8,7 @@ public sealed class HtmlTemplateRendererTests
     {
         // Arrange
         var renderer = new HtmlTemplateRenderer();
-        var templateHtml = "<li>${ user.name }</li> <li>${ user.surname }</li>";
+        var templateHtml = "<li>$( user.name )</li> <li>$( user.surname )</li>";
         var data = new
         {
             User = new {
@@ -31,7 +31,7 @@ public sealed class HtmlTemplateRendererTests
     {
         // Arrange
         var renderer = new HtmlTemplateRenderer();
-        var templateHtml = "<li>${ name }</li> <li>${ surname }</li>";
+        var templateHtml = "<li>$( name )</li> <li>$( surname )</li>";
         var data = new
         {
             Name = "Timur",
@@ -52,8 +52,8 @@ public sealed class HtmlTemplateRendererTests
     {
         // Arrange
         var renderer = new HtmlTemplateRenderer();
-        var templateHtml = "<li>${ user.name }</li> <li>${ user.surname }</li> <li>${ user.location.country }</li> " +
-                           "<li>${ user.location.city }</li>";
+        var templateHtml = "<li>$( user.name )</li> <li>$( user.surname )</li> <li>$( user.location.country )</li> " +
+                           "<li>$( user.location.city )</li>";
         var data = new
         {
             User = new {
@@ -83,7 +83,7 @@ public sealed class HtmlTemplateRendererTests
     {
         // Arrange
         var renderer = new HtmlTemplateRenderer();
-        var templateHtml = "$foreach(var item in user.Items)\n<li>${item.Name}</li>\n$endfor\n";
+        var templateHtml = "$foreach(var item in user.Items)\n<li>$(item.Name)</li>\n$endfor\n";
         var data = new
         {
             User = new {
@@ -123,10 +123,10 @@ public sealed class HtmlTemplateRendererTests
         // Arrange
         var renderer = new HtmlTemplateRenderer();
         var templateHtml = @"$foreach(var item in user.Items)
-<li>${item.Name}</li>
+<li>$(item.Name )</li>
 $endfor
-<h1>${user.Surname}</h1>
-<h1>${user.Location.Country}</h1>
+<h1>$(user.Surname )</h1>
+<h1>$(user.Location.Country )</h1>
 ";
         var data = new
         {
@@ -168,11 +168,11 @@ $endfor
     {
         // Arrange
         var renderer = new HtmlTemplateRenderer();
-        var templateHtml = @"$foreach(var item in user.Items)
-<li>${item.Name}</li>
+        var templateHtml = @"$foreach(var user in user.Items)
+<li>$(user.Name)</li>
 $endfor
-$foreach(var item in car.Items)
-<li>${item.Name}</li>
+$foreach(var car in car.Items)
+<li>$(car.Name)</li>
 $endfor
 ";
         var data = new
@@ -275,9 +275,9 @@ $endif
         var templateHtml = @"
 $foreach(var item in users.Items)
 $if(item.IsActive)
-<li>${ item.Name } - active</li>
+<li>$( item.Name ) - active</li>
 $else
-<li>${ item.Name } - nonactive</li>
+<li>$( item.Name ) - nonactive</li>
 $endif
 $endfor
 ";
@@ -322,6 +322,158 @@ $endfor
         
         // Act
         var actualResult = renderer.RenderFromString(templateHtml, data);
+        
+        // Assert
+        Assert.AreEqual(expectedResult, actualResult); 
+    }
+
+    [TestMethod]
+    public void RenderFromFile_WhenSingleVariable_ShouldReturnCorrectString()
+    {
+        // Arrange
+        var renderer = new HtmlTemplateRenderer();
+        var templateHtmlPath = "Static/WhenSingleVariable/inputTestFile.html";
+        var expectedResult = File.ReadAllText("Static/WhenSingleVariable/outputTestFile.html");
+            
+        var data = new
+        {
+            User = new {
+                Name = "Vanya"
+            }
+        };
+        
+        // Act
+        var actualResult = renderer.RenderFromFile(templateHtmlPath, data);
+        
+        // Assert
+        Assert.AreEqual(expectedResult, actualResult); 
+    }
+    
+    [TestMethod]
+    public void RenderFromFile_WhenMultipleVariables_ShouldReturnCorrectString()
+    {
+        // Arrange
+        var renderer = new HtmlTemplateRenderer();
+        var templateHtmlPath = "Static/WhenMultipleVariables/inputTestFile.html";
+        var expectedResult = File.ReadAllText("Static/WhenMultipleVariables/outputTestFile.html");
+            
+        var data = new
+        {
+            User = new {
+                Name = "Vanya"
+            },
+            Car = new
+            {
+                Label = "Lada Vesta"
+            }
+        };
+        
+        // Act
+        var actualResult = renderer.RenderFromFile(templateHtmlPath, data);
+        
+        // Assert
+        Assert.AreEqual(expectedResult, actualResult); 
+    }
+    
+    [TestMethod]
+    public void RenderFromFile_WhenSingleForeach_ShouldReturnCorrectString()
+    {
+        // Arrange
+        var renderer = new HtmlTemplateRenderer();
+        var templateHtmlPath = "Static/WhenSingleForeach/inputTestFile.html";
+        var expectedResult = File.ReadAllText("Static/WhenSingleForeach/outputTestFile.html");
+            
+        var data = new
+        {
+            Users = new {
+                Items = new[]
+                {
+                    new { Name = "Vanya" },
+                    new { Name = "Petya" },
+                    new { Name = "Vladimir" },
+                }
+            },
+        };
+        
+        // Act
+        var actualResult = renderer.RenderFromFile(templateHtmlPath, data);
+        
+        // Assert
+        Assert.AreEqual(expectedResult, actualResult); 
+    }
+    
+    [TestMethod]
+    public void RenderFromFile_WhenMultipleForeach_ShouldReturnCorrectString()
+    {
+        // Arrange
+        var renderer = new HtmlTemplateRenderer();
+        var templateHtmlPath = "Static/WhenMultipleForeach/inputTestFile.html";
+        var expectedResult = File.ReadAllText("Static/WhenMultipleForeach/outputTestFile.html");
+            
+        var data = new
+        {
+            Users = new {
+                Items = new[]
+                {
+                    new { Name = "Vanya" },
+                    new { Name = "Petya" },
+                    new { Name = "Vladimir" },
+                }
+            },
+            
+            Cars = new
+            {
+                Items = new[]
+                {
+                    new { Label = "Vesta" },
+                    new { Label = "Jeely" },
+                    new { Label = "Mercedes" },
+                }
+            }
+        };
+        
+        // Act
+        var actualResult = renderer.RenderFromFile(templateHtmlPath, data);
+        
+        // Assert
+        Assert.AreEqual(expectedResult, actualResult); 
+    }
+
+    [TestMethod]
+    public void RenderFromFile_WhenCondition_ShouldReturnCorrectString()
+    {
+        var renderer = new HtmlTemplateRenderer();
+        var templateHtmlPath = "Static/WhenCondition/inputTestFile.html";
+        var expectedResult = File.ReadAllText("Static/WhenCondition/outputTestFile.html");
+            
+        var data = new
+        {
+            IsAvailable = false
+        };
+        
+        // Act
+        var actualResult = renderer.RenderFromFile(templateHtmlPath, data);
+        
+        // Assert
+        Assert.AreEqual(expectedResult, actualResult); 
+    }
+
+    [TestMethod]
+    public void RenderToFile()
+    {
+        var renderer = new HtmlTemplateRenderer();
+        var inputTemplateHtmlPath = "Static/WhenCondition/inputTestFile.html";
+        var outputTemplateHtmlPath = "Static/WhenCondition/outputTestFile.html";
+        var expectedResult = File.ReadAllText("Static/WhenCondition/outputTestFile.html");
+            
+        var data = new
+        {
+            IsAvailable = false
+        };
+        
+        // Act
+        var renderedHtmlTemplate = renderer.RenderToFile(inputTemplateHtmlPath, outputTemplateHtmlPath, data);
+        var actualResult = File.ReadAllText("Static/WhenCondition/outputTestFile.html");
         
         // Assert
         Assert.AreEqual(expectedResult, actualResult); 

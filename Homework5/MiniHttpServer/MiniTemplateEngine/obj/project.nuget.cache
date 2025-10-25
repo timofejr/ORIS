@@ -1,10 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "bw8Nf9+ckGY=",
+  "dgSpecHash": "HgtJyNyE6Jk=",
   "success": true,
-  "projectFilePath": "/home/timofejr/MyProjects/ORIS_HW/Homework5/MiniHttpServer/MiniTemplateEngine/MiniTemplateEngine.csproj",
-  "expectedPackageFiles": [
-    "/home/timofejr/.nuget/packages/microsoft.aspnetcore.app.ref/9.0.9/microsoft.aspnetcore.app.ref.9.0.9.nupkg.sha512"
-  ],
+  "projectFilePath": "/home/timofejr/MyProjects/ORIS/Homework5/MiniHttpServer/MiniTemplateEngine/MiniTemplateEngine.csproj",
+  "expectedPackageFiles": [],
   "logs": []
 }

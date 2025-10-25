@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/home/timofejr/MyProjects/ORIS_HW/Homework5/MiniHttpServer/MiniHttpServer.csproj": {}
+    "/home/timofejr/MyProjects/ORIS/Homework5/MiniHttpServer/MiniHttpServer.csproj": {}
   },
   "projects": {
-    "/home/timofejr/MyProjects/ORIS_HW/Homework5/MiniHttpServer/MiniHttpServer.csproj": {
+    "/home/timofejr/MyProjects/ORIS/Homework5/MiniHttpServer/MiniHttpServer.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/timofejr/MyProjects/ORIS_HW/Homework5/MiniHttpServer/MiniHttpServer.csproj",
+        "projectUniqueName": "/home/timofejr/MyProjects/ORIS/Homework5/MiniHttpServer/MiniHttpServer.csproj",
         "projectName": "MiniHttpServer",
-        "projectPath": "/home/timofejr/MyProjects/ORIS_HW/Homework5/MiniHttpServer/MiniHttpServer.csproj",
+        "projectPath": "/home/timofejr/MyProjects/ORIS/Homework5/MiniHttpServer/MiniHttpServer.csproj",
         "packagesPath": "/home/timofejr/.nuget/packages/",
-        "outputPath": "/home/timofejr/MyProjects/ORIS_HW/Homework5/MiniHttpServer/obj/",
+        "outputPath": "/home/timofejr/MyProjects/ORIS/Homework5/MiniHttpServer/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/home/timofejr/.nuget/NuGet/NuGet.Config"
@@ -38,11 +38,17 @@
           "auditLevel": "low",
           "auditMode": "direct"
         },
-        "SdkAnalysisLevel": "9.0.100"
+        "SdkAnalysisLevel": "9.0.300"
       },
       "frameworks": {
         "net9.0": {
           "targetAlias": "net9.0",
+          "dependencies": {
+            "MSTest.TestFramework": {
+              "target": "Package",
+              "version": "[4.0.1, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
@@ -54,18 +60,12 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "downloadDependencies": [
-            {
-              "name": "Microsoft.AspNetCore.App.Ref",
-              "version": "[9.0.9, 9.0.9]"
-            }
-          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/9.0.110/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/home/timofejr/.dotnet/sdk/9.0.306/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

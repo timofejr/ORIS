@@ -12,4 +12,10 @@
   <ItemGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
     <SourceRoot Include="/home/timofejr/.nuget/packages/" />
   </ItemGroup>
+  <ImportGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
+    <Import Project="$(NuGetPackageRoot)mstest.analyzers/4.0.1/buildTransitive/MSTest.Analyzers.props" Condition="Exists('$(NuGetPackageRoot)mstest.analyzers/4.0.1/buildTransitive/MSTest.Analyzers.props')" />
+  </ImportGroup>
+  <PropertyGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
+    <PkgMSTest_Analyzers Condition=" '$(PkgMSTest_Analyzers)' == '' ">/home/timofejr/.nuget/packages/mstest.analyzers/4.0.1</PkgMSTest_Analyzers>
+  </PropertyGroup>
 </Project>

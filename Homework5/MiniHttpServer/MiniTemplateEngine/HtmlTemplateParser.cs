@@ -4,8 +4,8 @@ namespace MiniTemplateEngine;
 
 public class HtmlTemplateParser
 {
-    private const string VarTokenStart = "${";
-    private const string VarTokenEnd = "}";
+    private const string VarTokenStart = "$(";
+    private const string VarTokenEnd = ")";
 
     private const string BlockTokenStart = "$";
     private const string BlockTokenEnd = "\n";
@@ -17,8 +17,11 @@ public class HtmlTemplateParser
     private const string IfTagElse = "else";
     private const string IfTagEnd = "endif";
 
-    private static readonly Regex Rg = new ($@"(\{VarTokenStart}.*?{VarTokenEnd}|\{BlockTokenStart}.*?{BlockTokenEnd})");
-
+    private static readonly Regex Rg = new (
+        $@"({Regex.Escape(VarTokenStart)}.*?{Regex.Escape(VarTokenEnd)}|{Regex.Escape(BlockTokenStart)}.*?{Regex.Escape(BlockTokenEnd)})",
+        RegexOptions.Singleline
+    );
+    
     public List<Node> ParseTemplate(string template)
     {
         var tokens = Rg.Split(template).ToList();
@@ -63,19 +66,17 @@ public class HtmlTemplateParser
                 else if (tag == IfTagStart)
                 {
                     var condition = parts[1][.. ^1];
-                    var (trueBranch, endTag, pos) = Parse(tokens, i + 1, new HashSet<string> { IfTagEnd, IfTagElse });
+                    var (trueBranch, endTag, pos2) = Parse(tokens, i + 1, new HashSet<string> { IfTagEnd, IfTagElse });
                     List<Node> falseBranch = new();
                 
                     if (endTag == IfTagElse)
-                        (falseBranch, _, pos) = Parse(tokens, pos + 1, new HashSet<string> { IfTagEnd });
+                        (falseBranch, _, pos2) = Parse(tokens, pos2 + 1, new HashSet<string> { IfTagEnd });
                 
                     nodes.Add(new IfNode(condition, trueBranch, falseBranch));
-                    i = pos;
-                    break;
+                    i = pos2;
                 }
             }
-            
-            else
+            else if (!string.IsNullOrEmpty(token))
             {
                 nodes.Add(new TextNode(token));
             }

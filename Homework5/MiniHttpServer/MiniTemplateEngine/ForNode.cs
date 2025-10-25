@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Dynamic;
 using System.Reflection;
 using System.Text;
 
@@ -27,11 +28,9 @@ public class ForNode: Node
         var sb = new StringBuilder();
 
         foreach (var item in list)
-        {
-            var localData = new
-            {
-                item
-            };
+        { 
+            dynamic localData = new ExpandoObject();
+            ((IDictionary<string, object>)localData)[VariableName] = item;
             
             foreach (var node in Body)
             {
