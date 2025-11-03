@@ -9,15 +9,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Update="Settings/settings.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
     <Content Include="Static\**\*">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-      <Content Include="MiniTemplateEngine.UnitTests\**\*">
-          <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      </Content>
   </ItemGroup>
 
   <ItemGroup>
@@ -28,5 +22,9 @@
     <Reference Include="Npgsql">
       <HintPath>..\..\..\..\.nuget\packages\npgsql\9.0.4\lib\net8.0\Npgsql.dll</HintPath>
     </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="MiniHttpServer.Framework\MiniHttpServer.Framework.csproj" />
   </ItemGroup>
 </Project>

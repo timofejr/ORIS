@@ -1,15 +1,15 @@
-using System.Net;
-using MiniHttpServer.Context;
-using MiniHttpServer.Core.Attributes;
+using MiniHttpServer.Framework.Core.Abstracts;
+using MiniHttpServer.Framework.Core.Attributes;
+using MiniHttpServer.Framework.Core.HttpResponse;
 
 namespace MiniHttpServer.Controllers;
 
 [Controller]
-public class BonxController
+public class BonxController: BaseController
 {
     [HttpGet("/bonx/")]
-    public void MainPage(HttpListenerContext context)
+    public IResponseResult MainPage()
     {
-        GlobalContext.Server.SendStaticResponse(context,  HttpStatusCode.OK, GlobalContext.SettingsManager.Settings.StaticFilesPath + "/bonx/index.html");
+        return Page("/bonx/index.html", HttpContext);
     }
 }

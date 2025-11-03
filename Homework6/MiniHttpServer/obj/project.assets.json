@@ -68,6 +68,29 @@
         "build": {
           "buildTransitive/net9.0/MSTest.TestFramework.targets": {}
         }
+      },
+      "MiniHttpServer.Framework/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v9.0",
+        "dependencies": {
+          "MiniTemplateEngine": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/MiniHttpServer.Framework.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/MiniHttpServer.Framework.dll": {}
+        }
+      },
+      "MiniTemplateEngine/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v9.0",
+        "compile": {
+          "bin/placeholder/MiniTemplateEngine.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/MiniTemplateEngine.dll": {}
+        }
       }
     }
   },
@@ -247,11 +270,22 @@
         "mstest.testframework.4.0.1.nupkg.sha512",
         "mstest.testframework.nuspec"
       ]
+    },
+    "MiniHttpServer.Framework/1.0.0": {
+      "type": "project",
+      "path": "MiniHttpServer.Framework/MiniHttpServer.Framework.csproj",
+      "msbuildProject": "MiniHttpServer.Framework/MiniHttpServer.Framework.csproj"
+    },
+    "MiniTemplateEngine/1.0.0": {
+      "type": "project",
+      "path": "MiniTemplateEngine/MiniTemplateEngine.csproj",
+      "msbuildProject": "MiniTemplateEngine/MiniTemplateEngine.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net9.0": [
-      "MSTest.TestFramework >= 4.0.1"
+      "MSTest.TestFramework >= 4.0.1",
+      "MiniHttpServer.Framework >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -278,7 +312,11 @@
       "frameworks": {
         "net9.0": {
           "targetAlias": "net9.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "/home/timofejr/MyProjects/ORIS_HW/Homework6/MiniHttpServer/MiniHttpServer.Framework/MiniHttpServer.Framework.csproj": {
+              "projectPath": "/home/timofejr/MyProjects/ORIS_HW/Homework6/MiniHttpServer/MiniHttpServer.Framework/MiniHttpServer.Framework.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

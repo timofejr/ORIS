@@ -1,8 +1,9 @@
 ﻿using System.Reflection;
-using MiniHttpServer;
+using MiniHttpServer.Framework;
+using MiniHttpServer.Framework.Utils;
+using MiniHttpServer.Framework.Context;
+using MiniHttpServer.Framework.Settings;
 using MiniHttpServer.Utils;
-using MiniHttpServer.Context;
-using MiniHttpServer.Settings;
 
 try
 {   

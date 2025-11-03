@@ -1,38 +1,33 @@
 using System.Net;
 using System.Text.Json;
-using MiniHttpServer.Context;
-using MiniHttpServer.Core.Attributes;
+using MiniHttpServer.Framework.Core.Abstracts;
+using MiniHttpServer.Framework.Core.Attributes;
+using MiniHttpServer.Framework.Core.HttpResponse;
 using MiniHttpServer.DTOs;
-using MiniHttpServer.Utils;
+using MiniHttpServer.Framework.Utils;
 
 namespace MiniHttpServer.Controllers;
 
 [Controller]
-public class AuthController
+public class AuthController: BaseController
 {
     [HttpGet("/")]
-    public void MainPage(HttpListenerContext context)
+    public IResponseResult MainPage()
     {
-        GlobalContext.Server.SendStaticResponse(context,  HttpStatusCode.OK, GlobalContext.SettingsManager.Settings.StaticFilesPath + "/auth/index.html");
+        return Page("/auth/index.html", HttpContext);
     }
 
-    [HttpPost("/sendEmail/")]   
-    public void SendEmail(HttpListenerContext context)
+    [HttpPost("/sendEmail/")]
+    public IResponseResult SendEmail()
     {
-        if (!context.Request.HasEntityBody)
-        {
-            GlobalContext.Server.SendJsonResponse(context, HttpStatusCode.BadRequest);
-            return;
-        }
+        if (!HttpContext.Request.HasEntityBody)
+            return Json(string.Empty, HttpStatusCode.BadRequest);
 
-        using var reader = new StreamReader(context.Request.InputStream, context.Request.ContentEncoding);
-        var body =  reader.ReadToEnd();
+        using var reader = new StreamReader(HttpContext.Request.InputStream, HttpContext.Request.ContentEncoding);
+        var body = reader.ReadToEnd();
 
         if (string.IsNullOrEmpty(body))
-        {
-            GlobalContext.Server.SendJsonResponse(context, HttpStatusCode.BadRequest);
-            return;
-        }
+            return Json(string.Empty, HttpStatusCode.BadRequest);
         
         var emailData = JsonSerializer.Deserialize<SendEmailDto> (body, new JsonSerializerOptions
         {
@@ -43,6 +38,6 @@ public class AuthController
         
         EmailService.SendEmail(emailData.Email, "Данные от хтппсервера", message);
         
-        GlobalContext.Server.SendJsonResponse(context, HttpStatusCode.OK);
+        return Json(string.Empty);
     }
 }
