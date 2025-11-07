@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "9xU0giuJPdU=",
+  "success": true,
+  "projectFilePath": "/home/timofejr/MyProjects/ORIS/Homework7/MiniHttpServer/MiniHttpServer.Framework/MiniHttpServer.Framework.csproj",
+  "expectedPackageFiles": [
+    "/home/timofejr/.nuget/packages/microsoft.aspnetcore.app.ref/9.0.9/microsoft.aspnetcore.app.ref.9.0.9.nupkg.sha512"
+  ],
+  "logs": []
+}

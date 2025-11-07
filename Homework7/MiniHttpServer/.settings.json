@@ -1,0 +1,11 @@
+{
+  "StaticFilesPath": "Static/",
+  "Domain": "localhost",
+  "Port": "54321",
+  "EmailAddressFrom" : "example@gmail.com",
+  "EmailNameFrom" : "Example Example",
+  "SmtpPort" : 587,
+  "SmtpHost" : "smtp.gmail.com",
+  "SmtpPassword" : "example",
+  "DefaultConnection": "Host=localhost;Port=5432;Database=oris_db;Username=oris_user;Password=11408"
+}
