@@ -20,10 +20,6 @@
     </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="MiniHttpServer.Framework\MiniHttpServer.Framework.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
     <None Update="settings.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

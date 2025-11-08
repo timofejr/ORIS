@@ -1773,14 +1773,10 @@
 /home/timofejr/MyProjects/ORIS/Homework7/MiniHttpServer/bin/Debug/net9.0/tr/MSTest.TestFramework.resources.dll
 /home/timofejr/MyProjects/ORIS/Homework7/MiniHttpServer/bin/Debug/net9.0/zh-Hans/MSTest.TestFramework.resources.dll
 /home/timofejr/MyProjects/ORIS/Homework7/MiniHttpServer/bin/Debug/net9.0/zh-Hant/MSTest.TestFramework.resources.dll
-/home/timofejr/MyProjects/ORIS/Homework7/MiniHttpServer/bin/Debug/net9.0/MiniHttpServer.Framework.dll
-/home/timofejr/MyProjects/ORIS/Homework7/MiniHttpServer/bin/Debug/net9.0/MiniTemplateEngine.dll
 /home/timofejr/MyProjects/ORIS/Homework7/MiniHttpServer/bin/Debug/net9.0/MSTest.TestFramework.Extensions.dll
 /home/timofejr/MyProjects/ORIS/Homework7/MiniHttpServer/bin/Debug/net9.0/Npgsql.dll
 /home/timofejr/MyProjects/ORIS/Homework7/MiniHttpServer/bin/Debug/net9.0/Microsoft.Extensions.Logging.Abstractions.dll
 /home/timofejr/MyProjects/ORIS/Homework7/MiniHttpServer/bin/Debug/net9.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll
-/home/timofejr/MyProjects/ORIS/Homework7/MiniHttpServer/bin/Debug/net9.0/MiniHttpServer.Framework.pdb
-/home/timofejr/MyProjects/ORIS/Homework7/MiniHttpServer/bin/Debug/net9.0/MiniTemplateEngine.pdb
 /home/timofejr/MyProjects/ORIS/Homework7/MiniHttpServer/bin/Debug/net9.0/MSTest.TestFramework.Extensions.xml
 /home/timofejr/MyProjects/ORIS/Homework7/MiniHttpServer/obj/Debug/net9.0/MiniHttp.E2E47DD5.Up2Date
 /home/timofejr/MyProjects/ORIS/Homework7/MiniHttpServer/obj/Debug/net9.0/MiniHttpServer.genruntimeconfig.cache

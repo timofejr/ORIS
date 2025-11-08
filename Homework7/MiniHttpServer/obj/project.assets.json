@@ -119,29 +119,6 @@
             "related": ".xml"
           }
         }
-      },
-      "MiniHttpServer.Framework/1.0.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v9.0",
-        "dependencies": {
-          "MiniTemplateEngine": "1.0.0"
-        },
-        "compile": {
-          "bin/placeholder/MiniHttpServer.Framework.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/MiniHttpServer.Framework.dll": {}
-        }
-      },
-      "MiniTemplateEngine/1.0.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v9.0",
-        "compile": {
-          "bin/placeholder/MiniTemplateEngine.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/MiniTemplateEngine.dll": {}
-        }
       }
     }
   },
@@ -443,22 +420,11 @@
         "npgsql.nuspec",
         "postgresql.png"
       ]
-    },
-    "MiniHttpServer.Framework/1.0.0": {
-      "type": "project",
-      "path": "MiniHttpServer.Framework/MiniHttpServer.Framework.csproj",
-      "msbuildProject": "MiniHttpServer.Framework/MiniHttpServer.Framework.csproj"
-    },
-    "MiniTemplateEngine/1.0.0": {
-      "type": "project",
-      "path": "MiniTemplateEngine/MiniTemplateEngine.csproj",
-      "msbuildProject": "MiniTemplateEngine/MiniTemplateEngine.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net9.0": [
       "MSTest.TestFramework >= 4.0.1",
-      "MiniHttpServer.Framework >= 1.0.0",
       "Npgsql >= 9.0.4"
     ]
   },
@@ -486,11 +452,7 @@
       "frameworks": {
         "net9.0": {
           "targetAlias": "net9.0",
-          "projectReferences": {
-            "/home/timofejr/MyProjects/ORIS/Homework7/MiniHttpServer/MiniHttpServer.Framework/MiniHttpServer.Framework.csproj": {
-              "projectPath": "/home/timofejr/MyProjects/ORIS/Homework7/MiniHttpServer/MiniHttpServer.Framework/MiniHttpServer.Framework.csproj"
-            }
-          }
+          "projectReferences": {}
         }
       },
       "warningProperties": {

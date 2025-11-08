@@ -5,7 +5,7 @@ namespace MyOrmLibrary.UnitTests;
 [TestClass]
 public sealed class ORMContextTests
 {
-    private const string ConnectionString = "Host=localhost;Port=5432;Database=oris_db;Username=oris_user;Password=11408;SearchPath=travels,public;";
+    private const string ConnectionString = "Host=localhost;Port=5433;Database=oris_database;Username=oris_user;Password=11408;";
     
     [TestMethod]
     public void ReadById_WhenTargetExists()
@@ -129,5 +129,26 @@ public sealed class ORMContextTests
         context.Delete(6, "Users");
        
         Assert.AreEqual(true, true);
+    }
+
+    [TestMethod]
+    public void Where_WhenTargetIsValid()
+    {
+        //Arrange
+        var context = new ORMContext(ConnectionString);
+        var expectedValue = new List<Users>
+        {
+            new  ()
+            {
+                Id = 5,
+                Username = "Putin",
+                Email = "putin@gmail.com"
+            }
+        };
+       
+        //Act
+        var actualValue = context.Where<Users>(u => u.Username == "Putin");
+       
+        CollectionAssert.AreEqual(expectedValue, actualValue.ToList());
     }
 }

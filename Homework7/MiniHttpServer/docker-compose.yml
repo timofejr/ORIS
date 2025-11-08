@@ -9,18 +9,19 @@ services:
     container_name: my-app-container
     environment:
       - ASPNETCORE_ENVIRONMENT=Production
-      - ConnectionString=Host=postgres;Port=5432;Database=oris_db;Username=oris_user;Password=11408;
+      - ConnectionString=Host=postgres;Port=5432;Database=oris_database;Username=oris_user;Password=11408;
     depends_on:
       - postgres
     networks:
       - app-network
+      
   postgres:
     image: postgres:latest
     container_name: postgres-container
     environment:
       - POSTGRES_USER=oris_user
       - POSTGRES_PASSWORD=11408
-      - POSTGRES_DB=oris_db
+      - POSTGRES_DB=oris_database
     ports:
       - "0.0.0.0:5433:5432"
     volumes:
