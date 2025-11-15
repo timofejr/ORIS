@@ -1,0 +1,13 @@
+/home/timofejr/MyProjects/ORIS/HappyDay/MigrationsLibrary/MiniHttpServer/MigrationLibrary/bin/Debug/net9.0/MigrationLibrary.deps.json
+/home/timofejr/MyProjects/ORIS/HappyDay/MigrationsLibrary/MiniHttpServer/MigrationLibrary/bin/Debug/net9.0/MigrationLibrary.dll
+/home/timofejr/MyProjects/ORIS/HappyDay/MigrationsLibrary/MiniHttpServer/MigrationLibrary/bin/Debug/net9.0/MigrationLibrary.pdb
+/home/timofejr/MyProjects/ORIS/HappyDay/MigrationsLibrary/MiniHttpServer/MigrationLibrary/obj/Debug/net9.0/MigrationLibrary.GeneratedMSBuildEditorConfig.editorconfig
+/home/timofejr/MyProjects/ORIS/HappyDay/MigrationsLibrary/MiniHttpServer/MigrationLibrary/obj/Debug/net9.0/MigrationLibrary.AssemblyInfoInputs.cache
+/home/timofejr/MyProjects/ORIS/HappyDay/MigrationsLibrary/MiniHttpServer/MigrationLibrary/obj/Debug/net9.0/MigrationLibrary.AssemblyInfo.cs
+/home/timofejr/MyProjects/ORIS/HappyDay/MigrationsLibrary/MiniHttpServer/MigrationLibrary/obj/Debug/net9.0/MigrationLibrary.csproj.CoreCompileInputs.cache
+/home/timofejr/MyProjects/ORIS/HappyDay/MigrationsLibrary/MiniHttpServer/MigrationLibrary/obj/Debug/net9.0/MigrationLibrary.sourcelink.json
+/home/timofejr/MyProjects/ORIS/HappyDay/MigrationsLibrary/MiniHttpServer/MigrationLibrary/obj/Debug/net9.0/MigrationLibrary.dll
+/home/timofejr/MyProjects/ORIS/HappyDay/MigrationsLibrary/MiniHttpServer/MigrationLibrary/obj/Debug/net9.0/refint/MigrationLibrary.dll
+/home/timofejr/MyProjects/ORIS/HappyDay/MigrationsLibrary/MiniHttpServer/MigrationLibrary/obj/Debug/net9.0/MigrationLibrary.pdb
+/home/timofejr/MyProjects/ORIS/HappyDay/MigrationsLibrary/MiniHttpServer/MigrationLibrary/obj/Debug/net9.0/ref/MigrationLibrary.dll
+/home/timofejr/MyProjects/ORIS/HappyDay/MigrationsLibrary/MiniHttpServer/MigrationLibrary/obj/Debug/net9.0/MigrationLibrary.csproj.AssemblyReference.cache

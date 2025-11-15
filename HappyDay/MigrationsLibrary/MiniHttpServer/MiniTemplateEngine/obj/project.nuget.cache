@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "O3KNQXYlZGI=",
+  "success": true,
+  "projectFilePath": "/home/timofejr/MyProjects/ORIS/HappyDay/MigrationsLibrary/MiniHttpServer/MiniTemplateEngine/MiniTemplateEngine.csproj",
+  "expectedPackageFiles": [
+    "/home/timofejr/.nuget/packages/microsoft.aspnetcore.app.ref/9.0.9/microsoft.aspnetcore.app.ref.9.0.9.nupkg.sha512"
+  ],
+  "logs": []
+}
