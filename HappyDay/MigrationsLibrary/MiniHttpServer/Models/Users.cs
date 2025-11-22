@@ -20,3 +20,16 @@ class User {
     [Column("password")]
     public string Password { get; set; }
 }
+
+[Table("books")]
+class Book {
+    [PrimaryKey]
+    [Column("id")]
+    public int Id { get; set; }
+    
+    [Column("name")]
+    public string Name { get; set; }
+    
+    [Column("author")]
+    public string Author { get; set; }
+}
